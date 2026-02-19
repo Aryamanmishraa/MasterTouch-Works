@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background-color: #05070d;
+}
+
+body {
+  @apply font-body text-slate-100 bg-[#05070d] antialiased min-h-screen;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  @apply text-brand-200 transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-white;
+}
+
+.gradient-surface {
+  background-image: linear-gradient(145deg, #05070d 0%, #0a0c12 50%, #05070d 100%);
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.card-raise {
+  @apply transition duration-300 ease-out shadow-none;
+}
+
+.card-raise:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.button-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-400;
+}
+
+.button-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:text-white;
+}
+
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/70;
+}
+
+.section-padding {
+  @apply px-4 sm:px-8 lg:px-16 xl:px-24;
+}
+
+.grid-pattern {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  background-position: center;
+}
+
+.painting-page-bg {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(245, 165, 36, 0.2), transparent 32%),
+    radial-gradient(circle at 82% 12%, rgba(61, 108, 218, 0.22), transparent 30%),
+    radial-gradient(circle at 20% 78%, rgba(255, 255, 255, 0.08), transparent 28%),
+    linear-gradient(135deg, #05070d 0%, #0b1021 45%, #05070d 100%);
+}
+
+.painting-noise {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.28;
+}
+
+.surface {
+  @apply rounded-3xl border border-white/10 bg-[#0f1116] shadow-xl shadow-black/50;
+}
+
+.surface-strong {
+  @apply rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0f1116] via-[#0c0e13] to-[#0a0c12] shadow-2xl shadow-black/60;
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  inset: -120%;
+  background: linear-gradient(120deg, transparent 45%, rgba(255, 255, 255, 0.14) 50%, transparent 55%);
+  transform: translateX(-40%);
+  animation: shine 7s ease-in-out infinite;
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.spin-slow {
+  animation: spin 14s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-40%);
+  }
+  50% {
+    transform: translateX(60%);
+  }
+  100% {
+    transform: translateX(-40%);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3d6cda, #f5a524);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1021;
+}
