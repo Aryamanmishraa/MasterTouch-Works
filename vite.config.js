@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [react()],
-  base: mode === 'production' ? '/MasterTouch-Works/' : '/',
+  base: process.env.VITE_BASE_PATH || '/',
 }))
