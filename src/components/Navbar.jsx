@@ -22,13 +22,6 @@ const navLinkClasses = ({ isActive }) =>
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     if (!isOpen) return
@@ -40,11 +33,7 @@ function Navbar() {
   }, [isOpen])
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-slate-950/80 shadow-2xl shadow-black/40 backdrop-blur-xl' : 'bg-transparent'
-      }`}
-    >
+    <header className="sticky top-0 z-50 bg-black/95 shadow-2xl shadow-black/40 backdrop-blur-xl transition-all duration-300">
       <div className="section-padding">
         <div className="flex items-center justify-between py-4">
           <Link className="flex items-center gap-3" to="/">
