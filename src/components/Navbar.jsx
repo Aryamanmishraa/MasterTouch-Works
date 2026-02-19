@@ -48,13 +48,13 @@ function Navbar() {
       <div className="section-padding">
         <div className="flex items-center justify-between py-4">
           <Link className="flex items-center gap-3" to="/">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-xl font-black text-white shadow-glow">
-              SP
-            </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/60">Home · Office · Commercial</p>
-              <p className="font-display text-lg font-semibold text-white leading-tight">Satya Painter & Decorators 🖌️</p>
-            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt="SatyaWork logo"
+              className="h-14 w-auto drop-shadow-[0_10px_34px_rgba(0,0,0,0.35)]"
+              loading="lazy"
+              decoding="async"
+            />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -64,15 +64,6 @@ function Navbar() {
               </NavLink>
             ))}
           </nav>
-
-          <div className="hidden items-center gap-3 lg:flex">
-            <a href={cta.whatsapp} className="button-secondary" target="_blank" rel="noreferrer">
-              <MessageCircle className="h-4 w-4" /> WhatsApp
-            </a>
-            <a href={cta.phone} className="button-primary">
-              <PhoneCall className="h-4 w-4" /> Call Now
-            </a>
-          </div>
 
           <button
             className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 text-white/90 lg:hidden"

@@ -306,12 +306,7 @@ function Painting() {
         <section className="mt-14">
           <div className="relative overflow-hidden rounded-[28px] border border-white/15 bg-gradient-to-r from-[#f5a524] via-[#f57d24] to-[#3d6cda] p-8 shadow-[0_24px_120px_rgba(0,0,0,0.55)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.2),transparent_32%),radial-gradient(circle_at_80%_60%,rgba(255,255,255,0.18),transparent_30%)] opacity-70" />
-            <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="badge bg-white/25 text-slate-950">Ready to begin?</p>
-                <h3 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-slate-950">Get Professional Painting Today</h3>
-                <p className="text-slate-900/80">Quick responses on call or WhatsApp. We mirror the vibrant reference style with premium delivery.</p>
-              </div>
+            <div className="relative flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <div className="flex flex-wrap gap-3">
                 <a
                   href={cta.phone}
