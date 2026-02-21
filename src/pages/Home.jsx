@@ -48,8 +48,8 @@ function Home() {
               Delhi NCR
             </div>
             <h1 className="font-display text-4xl leading-tight text-white sm:text-5xl">
-              Fresh walls, reliable fixes
-              <span className="block text-brand-200">Hi, I am Satya Kumar</span>
+              Hi, I am Satya Kumar
+              <span className="block text-brand-200">Painter & Decorator in Delhi NCR</span>
             </h1>
             <p className="max-w-2xl text-lg text-white/80">
               Painter and decorator who keeps sites neat, timelines honest, and communication clear. Painting, small civil repairs, and labour support with one accountable point of contact.

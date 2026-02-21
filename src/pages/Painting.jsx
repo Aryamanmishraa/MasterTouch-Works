@@ -36,6 +36,11 @@ const gallery = [
 const galleryFallback =
   'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=70'
 
+const textureShots = [
+  `${import.meta.env.BASE_URL}texture1.jpg`,
+  `${import.meta.env.BASE_URL}texture2.jpg`,
+]
+
 const benefits = [
   { title: '10+ Years Experience', detail: 'Seasoned painting crew with supervised execution for homes and offices.' },
   { title: 'Quality Materials', detail: 'Top-brand emulsions, primers, and waterproof systems selected to spec.' },
@@ -189,6 +194,80 @@ function Painting() {
                 </motion.div>
               )
             })}
+          </div>
+        </section>
+
+        <section className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative overflow-hidden rounded-[26px] border border-white/12 bg-white/5 p-7 shadow-[0_22px_90px_rgba(0,0,0,0.5)]">
+            <div className="absolute inset-0" style={{
+              background:
+                'radial-gradient(circle at 20% 20%, rgba(245,165,36,0.18), transparent 35%), radial-gradient(circle at 80% 80%, rgba(61,108,218,0.16), transparent 32%)',
+            }}
+            />
+            <div className="relative flex items-center justify-between gap-3">
+              <p className="badge bg-white/15">Texture & Feature Walls</p>
+              <Sparkles className="h-5 w-5 text-accent-500" />
+            </div>
+            <h3 className="relative mt-3 font-display text-2xl font-semibold text-white">Add depth with designer textures</h3>
+            <p className="relative text-white/70">Metallic, concrete, stucco, and abstract finishes with proper priming, sealing, and top coats.</p>
+            <div className="relative mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                'Stucco, rustic, and marble effects',
+                'Metallics with protective top coats',
+                'Concrete / cement finish with sealers',
+                'Geometric tapes, ombré, and abstracts',
+              ].map((item, index) => (
+                <motion.div
+                  key={item}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.4 }}
+                  custom={index}
+                  className="flex gap-3 rounded-xl border border-white/12 bg-white/5 p-3"
+                >
+                  <div className="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-accent-500/20 text-accent-500 shadow-inner">
+                    <Sparkles className="h-4 w-4" />
+                  </div>
+                  <p className="text-sm font-semibold text-white/90">{item}</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="relative mt-6 flex flex-wrap gap-3 text-sm text-white/75">
+              <span className="rounded-full bg-white/10 px-3 py-1">Sample boards on request</span>
+              <span className="rounded-full bg-white/10 px-3 py-1">Low-VOC options</span>
+              <span className="rounded-full bg-white/10 px-3 py-1">Moisture-safe prep</span>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {textureShots.map((src, index) => (
+              <motion.div
+                key={src}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.35 }}
+                custom={index}
+                className="relative overflow-hidden rounded-2xl border border-white/12 bg-white/5"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#05070d]/60" />
+                <img
+                  src={src}
+                  alt="Texture wall sample"
+                  className="h-56 w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null
+                    event.currentTarget.src = galleryFallback
+                  }}
+                />
+                <div className="absolute bottom-3 left-3 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white/85">
+                  Texture sample
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 
