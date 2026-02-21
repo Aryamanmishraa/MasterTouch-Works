@@ -1,31 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=/MasterTouch-Works/" />
     <title>Redirecting…</title>
-    <style>
-      body { margin: 0; font-family: sans-serif; display: grid; place-items: center; height: 100vh; background: #0a0f1b; color: #f5f5f5; }
-      .card { padding: 24px 28px; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; background: rgba(255,255,255,0.04); box-shadow: 0 14px 50px rgba(0,0,0,0.35); text-align: center; }
-      a { color: #f5a524; }
-    </style>
+    <script>
+      // Redirect any unknown route back to the SPA entry for GitHub Pages
+      (function() {
+        var base = '/MasterTouch-Works/';
+        if (window.location.pathname === base) return;
+        window.location.replace(base);
+      })();
+    </script>
   </head>
   <body>
-    <div class="card">
-      <p>Redirecting to the app…</p>
-      <p><a id="fallback-link" href="/MasterTouch-Works/">Click here if it doesn’t load.</a></p>
-    </div>
-    <script>
-      (function () {
-        var base = '/MasterTouch-Works/'
-        var target = base
-        if (window.location.pathname.startsWith(base)) {
-          target = base
-        }
-        window.location.replace(target)
-        var link = document.getElementById('fallback-link')
-        if (link) link.href = target
-      })()
-    </script>
+    Redirecting…
   </body>
 </html>
