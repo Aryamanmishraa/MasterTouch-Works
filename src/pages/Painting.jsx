@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { PaintBucket, Brush, Droplets, Sparkles, PhoneCall, MessageCircle, Construction, CheckCircle2 } from 'lucide-react'
+import { PaintBucket, Brush, Droplets, Sparkles, Construction, CheckCircle2 } from 'lucide-react'
 import ScheduleModal from '../components/ScheduleModal'
 
 const services = [
@@ -39,6 +39,8 @@ const galleryFallback =
 const textureShots = [
   `${import.meta.env.BASE_URL}texture1.jpg`,
   `${import.meta.env.BASE_URL}texture2.jpg`,
+  `${import.meta.env.BASE_URL}texture3.jpg`,
+  `${import.meta.env.BASE_URL}texture4.jpg`,
 ]
 
 const benefits = [
@@ -53,11 +55,6 @@ const stats = [
   { value: '48 hrs', label: 'Typical 2BHK repaint' },
   { value: '4.9★', label: 'Client satisfaction' },
 ]
-
-const cta = {
-  phone: 'tel:+919162903405',
-  whatsapp: 'https://wa.me/919162903405',
-}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -103,20 +100,6 @@ function Painting() {
                 <span className="rounded-full bg-white/10 px-3 py-1">Expert Supervised Teams</span>
               </div>
               <div className="flex flex-wrap gap-3">
-                <a
-                  href={cta.phone}
-                  className="button-primary bg-gradient-to-r from-[#f5a524] via-[#f57d24] to-[#f5a524] text-slate-950 shadow-[0_18px_60px_rgba(245,165,36,0.35)] hover:shadow-[0_16px_50px_rgba(245,165,36,0.45)]"
-                >
-                  <PhoneCall className="h-4 w-4" /> Call Now
-                </a>
-                <a
-                  href={cta.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button-secondary border-white/30 bg-white/10 text-white shadow-[0_14px_50px_rgba(61,108,218,0.35)] hover:border-white/60"
-                >
-                  <MessageCircle className="h-4 w-4" /> WhatsApp
-                </a>
                 <button
                   type="button"
                   onClick={() => setOpen(true)}
@@ -157,7 +140,7 @@ function Painting() {
             </div>
             <div className="flex items-center gap-3 text-sm text-white/70">
               <Sparkles className="h-4 w-4 text-accent-500" />
-              Smooth hover lift & glow
+              Premium stacked finishes
             </div>
           </div>
 
@@ -249,13 +232,13 @@ function Painting() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.35 }}
                 custom={index}
-                className="relative overflow-hidden rounded-2xl border border-white/12 bg-white/5"
+                className="relative overflow-hidden rounded-2xl border border-white/12 bg-white/5 aspect-[4/3]"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#05070d]/60" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#05070d]/30" />
                 <img
                   src={src}
                   alt="Texture wall sample"
-                  className="h-56 w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"
                   onError={(event) => {
@@ -263,50 +246,9 @@ function Painting() {
                     event.currentTarget.src = galleryFallback
                   }}
                 />
-                <div className="absolute bottom-3 left-3 rounded-full bg-black/55 px-3 py-1 text-xs font-semibold text-white/85">
+                <div className="absolute bottom-3 left-3 rounded-full bg-black/45 px-3 py-1 text-xs font-semibold text-white/90">
                   Texture sample
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-14 overflow-hidden rounded-[28px] border border-white/12 bg-white/5 p-7 shadow-2xl">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <p className="badge bg-white/15">Image Gallery</p>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-white">See the finish quality</h2>
-            </div>
-            <div className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm text-white/75">
-              <Sparkles className="h-4 w-4 text-brand-100" /> Clean edges | Texture-ready walls
-            </div>
-          </div>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {gallery.map((src, index) => (
-              <motion.div
-                key={src}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                custom={index}
-                whileHover={{ scale: 1.02 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/12 bg-white/5"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#05070d]/50 opacity-0 transition duration-500 group-hover:opacity-80" />
-                <img
-                  src={src}
-                  alt="Satya Painter & Decorators project"
-                  className="h-60 w-full object-cover transition duration-700 group-hover:scale-110"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority={index === 0 ? 'high' : 'auto'}
-                  onError={(event) => {
-                    event.currentTarget.onerror = null
-                    event.currentTarget.src = galleryFallback
-                  }}
-                />
               </motion.div>
             ))}
           </div>
@@ -382,43 +324,10 @@ function Painting() {
           </div>
         </section>
 
-        <section className="mt-14">
-          <div className="relative overflow-hidden rounded-[28px] border border-white/15 bg-gradient-to-r from-[#f5a524] via-[#f57d24] to-[#3d6cda] p-8 shadow-[0_24px_120px_rgba(0,0,0,0.55)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.2),transparent_32%),radial-gradient(circle_at_80%_60%,rgba(255,255,255,0.18),transparent_30%)] opacity-70" />
-            <div className="relative flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={cta.phone}
-                  className="button-primary bg-slate-950 text-white shadow-[0_16px_60px_rgba(0,0,0,0.35)] hover:bg-slate-900"
-                >
-                  <PhoneCall className="h-4 w-4" /> Call Now
-                </a>
-                <a
-                  href={cta.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/60 bg-white/30 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-white/60"
-                >
-                  <MessageCircle className="h-4 w-4" /> WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        
       </div>
 
       <div className="pointer-events-none fixed inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
-
-      <div className="fixed bottom-5 right-5 z-40 md:hidden">
-        <div className="flex gap-3">
-          <a href={cta.phone} className="button-primary shadow-lg shadow-brand-900/40">
-            <PhoneCall className="h-4 w-4" /> Call
-          </a>
-          <a href={cta.whatsapp} target="_blank" rel="noreferrer" className="button-secondary">
-            <MessageCircle className="h-4 w-4" /> WhatsApp
-          </a>
-        </div>
-      </div>
 
       <ScheduleModal open={open} onClose={() => setOpen(false)} defaultService="Painting" />
     </div>

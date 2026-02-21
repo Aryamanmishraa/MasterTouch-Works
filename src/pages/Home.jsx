@@ -47,9 +47,23 @@ function Home() {
               <span className="inline-block h-1 w-1 rounded-full bg-brand-200" />
               Delhi NCR
             </div>
-            <h1 className="font-display text-4xl leading-tight text-white sm:text-5xl">
-              Hi, I am Satya Kumar
-              <span className="block text-brand-200">Painter & Decorator in Delhi NCR</span>
+            <h1 className="font-display text-4xl leading-tight text-white sm:text-5xl space-y-1">
+              <motion.span
+                className="block"
+                initial={{ opacity: 0, y: 24, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 180, damping: 16 }}
+              >
+                Hi, I am Satya Kumar
+              </motion.span>
+              <motion.span
+                className="block text-brand-200"
+                initial={{ opacity: 0, y: 24, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 180, damping: 16, delay: 0.08 }}
+              >
+                Painter & Decorator in Delhi NCR
+              </motion.span>
             </h1>
             <p className="max-w-2xl text-lg text-white/80">
               Painter and decorator who keeps sites neat, timelines honest, and communication clear. Painting, small civil repairs, and labour support with one accountable point of contact.
@@ -99,23 +113,13 @@ function Home() {
             <div className="absolute -right-6 -bottom-6 h-28 w-28 rounded-full bg-white/15 blur-3xl" />
             <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-[26px] border border-white/12 bg-white/5 shadow-[0_22px_90px_rgba(0,0,0,0.55)]">
               <img
-                src="https://images.unsplash.com/photo-1582719478171-2f2df46fd9df?auto=format&fit=crop&w=1200&q=70"
-                alt="Painting team at work"
+                src={`${import.meta.env.BASE_URL}person.jpeg`}
+                alt="Portrait"
                 className="h-[440px] w-full object-cover"
                 loading="lazy"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
-              <div className="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white/85">
-                On-site visit ready
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl border border-white/15 bg-black/55 px-4 py-3 text-sm text-white">
-                <div>
-                  <p className="font-semibold">Masked floors, crisp edges</p>
-                  <p className="text-white/70">Daily updates with photos</p>
-                </div>
-                <div className="rounded-xl bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em]">Reliable</div>
-              </div>
             </div>
           </motion.div>
         </div>

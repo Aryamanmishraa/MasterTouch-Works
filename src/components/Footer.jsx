@@ -74,7 +74,7 @@ function Footer() {
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6 text-xs text-white/60">
-          <p>© {new Date().getFullYear()} MasterTouch Works. All rights reserved.</p>
+          <p>© 2026 SatyaWorks. All rights reserved.</p>
           <p className="mt-2 text-white/70">Developed by Aryaman Mishra · Email: aryamanmishra13@gmail.com</p>
         </div>
       </div>
