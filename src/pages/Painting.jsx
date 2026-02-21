@@ -56,6 +56,12 @@ const stats = [
   { value: '4.9★', label: 'Client satisfaction' },
 ]
 
+const paintingRates = [
+  { label: 'Daily rate', value: '₹900/day', note: 'Includes labour, masking, putty/primer as scoped' },
+  { label: 'Materials', value: 'At actuals', note: 'Branded paints billed with store invoice' },
+  { label: 'Site visit', value: 'Free quote', note: 'Scope, timeline, and surface checks before start' },
+]
+
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: 0.07 * i, duration: 0.5, ease: 'easeOut' } }),
@@ -177,6 +183,36 @@ function Painting() {
                 </motion.div>
               )
             })}
+          </div>
+        </section>
+
+        <section className="mt-14 overflow-hidden rounded-[26px] border border-white/12 bg-white/5 p-7 shadow-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="badge bg-white/10">Rates</p>
+              <h3 className="mt-2 font-display text-2xl font-semibold text-white">Transparent painting rates</h3>
+              <p className="text-white/70">Clear labour and material terms before the first stroke.</p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {paintingRates.map((item, index) => (
+              <motion.div
+                key={item.label}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.45 }}
+                custom={index}
+                className="rounded-2xl border border-white/12 bg-white/5 p-4 shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-white">{item.label}</p>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/80">{item.value}</span>
+                </div>
+                <p className="mt-2 text-sm text-white/70">{item.note}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 

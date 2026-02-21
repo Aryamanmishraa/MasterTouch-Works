@@ -27,10 +27,10 @@ const works = [
 ]
 
 const rates = [
-  { label: 'Brick / block work', value: 'from ₹220 / sq ft*' },
-  { label: 'Plaster work', value: 'from ₹65 / sq ft*' },
-  { label: 'Tile fixing', value: 'from ₹45 / sq ft*' },
-  { label: 'Daily rate (mistri)', value: '₹900 / day' },
+  { label: 'Brick / block work', value: 'from ₹220 / sq ft*', note: 'Plumb-checked walls, proper curing, lintels.' },
+  { label: 'Plaster work', value: 'from ₹65 / sq ft*', note: 'Level guides, crack-free finishes ready for paint.' },
+  { label: 'Tile fixing', value: 'from ₹45 / sq ft*', note: 'Laser-leveled, spacers, grouting, and trims.' },
+  { label: 'Daily rate (mistri)', value: '₹900 / day', note: 'Includes tools handling; materials at actuals.' },
 ]
 
 const testimonials = [
@@ -57,8 +57,8 @@ const cta = {
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: 0.08 * i, duration: 0.45 } }),
+  hidden: { opacity: 0, y: 18 },
+  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: 0.07 * i, duration: 0.5, ease: 'easeOut' } }),
 }
 
 function Mistri() {
@@ -74,7 +74,11 @@ function Mistri() {
     <div className="relative overflow-hidden pb-16">
       <div className="absolute inset-0 bg-hero-gradient" />
       <div className="section-padding relative pt-20">
-        <div className="surface-strong p-8 border border-yellow-400/25">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
+          className="surface-strong p-8 border border-yellow-400/25"
+        >
           <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="space-y-4">
               <p className="badge bg-yellow-500/20 text-yellow-100">Construction</p>
@@ -93,21 +97,25 @@ function Mistri() {
                 </a>
               </div>
             </div>
-            <div className="relative">
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.1, duration: 0.7 } }}
+            >
               <div className="absolute -left-6 -top-6 h-20 w-20 rounded-full bg-yellow-500/20 blur-3xl" />
               <div className="absolute -right-6 -bottom-6 h-16 w-16 rounded-full bg-orange-400/20 blur-3xl" />
               <div className="overflow-hidden rounded-3xl border border-yellow-400/25 shadow-2xl shadow-black/50">
                 <img
                   src="/MISTRI.png"
                   alt="Mistri services collage"
-                  className="w-full object-cover"
+                  className="w-full object-cover floating"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.section>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {works.map((item, index) => (
@@ -132,33 +140,41 @@ function Mistri() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="surface p-7">
-            <p className="badge bg-white/10">Rates & Hours</p>
-            <div className="mt-3 space-y-3">
-              {rates.map((rate, index) => (
-                <motion.div
-                  key={rate.label}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.4 }}
-                  custom={index}
-                  className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3"
-                  whileHover={{ y: -4 }}
-                >
-                  <p className="text-white font-semibold">{rate.label}</p>
-                  <span className="text-yellow-100 font-semibold">{rate.value}</span>
-                </motion.div>
-              ))}
+        <section className="mt-12 overflow-hidden rounded-[26px] border border-white/12 bg-white/5 p-7 shadow-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="badge bg-white/10">Rates</p>
+              <h3 className="mt-2 font-display text-2xl font-semibold text-white">Transparent mistri rates</h3>
+              <p className="text-white/70">Labour and scope-based pricing with clear inclusions.</p>
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-white/70">
-              <Clock8 className="h-4 w-4" /> Working hours: 8 AM – 6 PM · Sunday on request
+            <div className="flex items-center gap-2 text-sm text-white/70">
+              <Clock8 className="h-4 w-4" /> Working hours: 8 AM – 6 PM (Sunday on request)
             </div>
-            <p className="mt-2 text-xs text-white/60">*Rates vary by thickness, height, material, and site access.</p>
           </div>
 
-          <div className="surface-strong p-7 bg-gradient-to-br from-yellow-500/20 via-white/5 to-transparent border border-yellow-400/25">
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {rates.map((rate, index) => (
+              <motion.div
+                key={rate.label}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.45 }}
+                custom={index}
+                className="rounded-2xl border border-white/12 bg-white/5 p-4 shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-white">{rate.label}</p>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/80">{rate.value}</span>
+                </div>
+                <p className="mt-2 text-sm text-white/70">{rate.note}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="mt-3 text-xs text-white/60">*Final rates depend on thickness, height, materials, and site access.</p>
+        </section>
+
+        <div className="mt-12 surface-strong p-7 bg-gradient-to-br from-yellow-500/20 via-white/5 to-transparent border border-yellow-400/25">
             <p className="badge bg-yellow-500/20 text-yellow-50">Testimonials</p>
             <div className="mt-3">
               <AnimatePresence mode="wait">
@@ -192,7 +208,6 @@ function Mistri() {
               </div>
             </div>
           </div>
-        </div>
 
         <div className="mt-12 surface p-7">
           <div className="flex flex-wrap items-center justify-between gap-4">
