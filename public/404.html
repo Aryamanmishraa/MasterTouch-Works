@@ -18,9 +18,13 @@
     <script>
       (function () {
         var base = '/MasterTouch-Works/'
+        var target = base
+        if (window.location.pathname.startsWith(base)) {
+          target = base
+        }
+        window.location.replace(target)
         var link = document.getElementById('fallback-link')
-        if (link) link.href = base
-        window.location.replace(base)
+        if (link) link.href = target
       })()
     </script>
   </body>
